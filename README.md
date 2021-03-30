@@ -8,7 +8,8 @@ I basically looked like this
 `pandoc metadata_de.yaml -o ./level_up_de.pdf --from markdown -V lang=de-DE level_up_de.md`
 
 This simple command can be pasted into the command line everytime I want to build a new version of the ebook.
-But: I have to keep in mind the command which is tedious, so let's make a script
+But: I have to keep in mind the command which is tedious. I could write it into a text file and copy it everytime I use it. 
+there is a more elegant way: let's make a script!
 
 ### Make a script
 A shell script is basically a file with the extension .sh
@@ -36,12 +37,37 @@ pandoc metadata_de.yaml -o ./level_up_de.pdf --from markdown -V lang=de-DE level
 After finishing the german version I also wanted to create an english version,
 so the _de strings should be replaced by a variable to switch between languages
 
-To declare a variable you 
+To declare a variable you write down the name and assign it a value with the equal sign.
+You print a variable by using thew $ sign to access its content.
+
 ```bash
-language = "en"
-echo "$language"
+language="en"
+echo "Language: $language"
+```
+**Caveat: whitespaces are not allowed around the equal sign!**
+```bash
+language = "en" # this won't work
 ```
 
 
+Let's have a look at our script now:
 
+```bash
+#!/bin/bash
+echo "Start generating PDF"
+language="en"
+echo "Language: $language"
+pandoc metadata_$language.yaml -o ./level_up_$language.pdf --from markdown -V lang=de-DE level_up_$language.md
+```
+
+Pretty neat! 
+
+But we need to get rid of the "de-DE" as well
+
+### Conditions
+When we get en as language we want to use en-GB as language code. When de is used we want de-DE
+
+
+
+### Uppercase
 
