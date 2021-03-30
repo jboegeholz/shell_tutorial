@@ -5,7 +5,7 @@ TEXT_FILES=(
 ./data/03.txt
 )
 
-for text_file in  ${TEXT_FILES[*]}
+for text_file in ${TEXT_FILES[*]}
 do
 	cat "$text_file"
 	printf "\n"
