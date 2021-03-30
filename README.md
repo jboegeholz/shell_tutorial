@@ -66,8 +66,19 @@ But we need to get rid of the "de-DE" as well
 
 ### Conditions
 When we get en as language we want to use en-GB as language code. When de is used we want de-DE
+Let's write some conditions.
+
+```bash
+if [[ $language = "en" ]]
+then
+  lang_subtag="$language-GB"
+elif [[ $language = "de" ]]
+then
+  lang_subtag="$language-DE"
+else
+  echo "Wrong language"
+fi
+```
 
 
-
-### Uppercase
 

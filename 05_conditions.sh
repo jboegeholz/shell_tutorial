@@ -1,10 +1,10 @@
 #!/bin/bash
-language="DE"
+language="de"
 
-if [[ $language = "EN" ]]
+if [[ $language = "en" ]]
 then
   echo "English"
-elif [[ $language = "DE" ]]
+elif [[ $language = "de" ]]
 then
   echo "Deutsch"
 else
