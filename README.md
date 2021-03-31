@@ -35,10 +35,10 @@ pandoc metadata_de.yaml -o ./level_up_de.pdf --from markdown -V lang=de-DE level
 ```
 ### Variables
 After finishing the german version I also wanted to create an english version,
-so the _de strings should be replaced by a variable to switch between languages
+so the "de" strings should be replaced by a variable to switch between languages.
 
-To declare a variable you write down the name and assign it a value with the equal sign.
-You print a variable by using thew $ sign to access its content.
+To declare a variable, you write down the name and assign it a value with the equal sign.
+You use a variable by using thew $ sign to access its content.
 
 ```bash
 language="en"
@@ -65,7 +65,7 @@ Pretty neat!
 But we need to get rid of the "de-DE" as well
 
 ### Conditions
-When we get en as language we want to use en-GB as language code. When de is used we want de-DE
+When we get "en" as language we want to use en-GB as language code. When "de" is used we want de-DE
 Let's write some conditions.
 
 ```bash
@@ -79,6 +79,6 @@ else
   echo "Wrong language"
 fi
 ```
-
+Now we can replace the de-DE with $lang_subtag
 
 
