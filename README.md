@@ -55,9 +55,9 @@ Let's have a look at our script now:
 ```bash
 #!/bin/bash
 echo "Start generating PDF"
-language="en"
-echo "Language: $language"
-pandoc metadata_$language.yaml -o ./level_up_$language.pdf --from markdown -V lang=de-DE level_up_$language.md
+lang="en"
+echo "Language: $lang"
+pandoc metadata_$lang.yaml -o ./level_up_$lang.pdf --from markdown -V lang=de-DE level_up_$lang.md
 ```
 
 Pretty neat! 
@@ -65,20 +65,58 @@ Pretty neat!
 But we need to get rid of the "de-DE" as well
 
 ### Conditions
-When we get "en" as language we want to use en-GB as language code. When "de" is used we want de-DE
+When we get "en" as language we want to use en-US as language subtag. When "de" is used we want de-DE
 Let's write some conditions.
 
 ```bash
-if [[ $language = "en" ]]
+if [[ $lang = "en" ]]
 then
-  lang_subtag="$language-GB"
-elif [[ $language = "de" ]]
+  lang_subtag="$lang-US"
+elif [[ $lang = "de" ]]
 then
-  lang_subtag="$language-DE"
+  lang_subtag="$lang-DE"
 else
   echo "Wrong language"
 fi
 ```
 Now we can replace the de-DE with $lang_subtag
+
+```bash
+pandoc metadata_$lang.yaml -o ./level_up_$lang.pdf --from markdown -V lang=$lang_subtag level_up_$lang.md
+```
+
+### Command Line Arguments
+
+Now that we can generate the ebook for english and german we could introduce a command line parameter.
+In bash every argument provided to the script is stored in variables $1 .. $n
+
+```bash
+lang="$1"
+```
+
+### Arrays and loops
+
+I wanted to break down the big markdown file into individual chapters.
+To make an array variable in bash you can do the following:
+
+```bash
+chapters=(
+./de/chapter_01.txt
+./de/chapter_02.txt
+./de/chapter_03.txt
+)
+```
+
+Looping over an array looks like this:
+
+```bash
+for chapter in ${chapters[*]}
+do
+	cat "$chapter"
+	printf "\n"
+done
+```
+
+### Reading from files
 
 
