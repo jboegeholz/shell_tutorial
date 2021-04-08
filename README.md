@@ -3,7 +3,7 @@
 ## My tale of woe
 
 When I started to write my first ebook I decided to use pandoc to transform markdown into pdf.
-I basically looked like this
+It basically looked like this
 
 `pandoc metadata_de.yaml -o ./level_up_de.pdf --from markdown -V lang=de-DE level_up_de.md`
 
@@ -115,6 +115,11 @@ do
 	cat "$chapter"
 	printf "\n"
 done
+```
+
+So now we can pass the chapters array to pandoc
+```bash
+pandoc metadata_$lang.yaml -o ./level_up_$lang.pdf --from markdown -V lang=$lang_subtag ${chapters[*]}
 ```
 
 ### Reading from files
