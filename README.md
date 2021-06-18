@@ -9,11 +9,12 @@ It basically looked like this
 
 This simple command can be pasted into the command line everytime I want to build a new version of the ebook.
 But: I have to keep in mind the command which is tedious. I could write it into a text file and copy it everytime I use it. 
-there is a more elegant way: let's make a script!
+There is a more elegant way: let's make a script!
 
 ### Make a script
 A shell script is basically a file with the extension .sh
-When You want to specify with shell shall be used you put 
+When You want to specify which shell shall be used, you put
+
 ```bash
 #!/bin/bash
 ```
@@ -34,7 +35,7 @@ echo "Start generating PDF"
 pandoc metadata_de.yaml -o ./level_up_de.pdf --from markdown -V lang=de-DE level_up_de.md
 ```
 ### Variables
-After finishing the german version I also wanted to create an english version,
+After finishing the German version I also wanted to create an English version,
 so the "de" strings should be replaced by a variable to switch between languages.
 
 To declare a variable, you write down the name and assign it a value with the equal sign.
